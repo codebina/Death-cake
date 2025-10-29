@@ -1,6 +1,6 @@
 # Death Cake
 
-Death cake este un joc de tip RPG inspirat după Stardew Valley. După moartea bunicii sale, jucătorul vizitează satul în care locuia aceasta pentru a lua în grijă ferma ei și a îi pregăti pomana perfectă. Pentru a îndeplini acest scop, jucătorul trebuie să prepare mâncăruri tradiționale cu ajutorul alimentelor crescute în grădină sau primite de la localnici. Aceștia îi dăruiesc jucătorului produsele numai în schimbul altora cultivate in fermă. Pe parcurs, jucătorul dezvăluie misterele bunicii și ale satului, iar prin completarea sarcinilor primite de la localnici, jucătorul află rețeta secretă de colivă tradițională.
+Death cake este un joc de tip RPG, inspirat după Stardew Valley. După moartea bunicii sale, jucătorul vizitează satul în care locuia aceasta pentru a lua în grijă ferma ei și a îi pregăti "pomana perfectă" - un ospăț în memoria ei. Pentru a-și atinge scopul, jucătorul trebuie să prepare mâncăruri tradiționale cu ajutorul alimentelor crescute și cultivate în fermă sau primite de la localnici. Aceștia îi dăruiesc jucătorului produsele numai în schimbul altora, fiecare având propriile preferințe, nevoi și povești. Pe parcurs, jucătorul descoperă misterele bunicii și ale satului, iar prin completarea sarcinilor primite de la localnici, jucătorul află rețeta secretă de colivă tradițională.
 
 | Laborant  | Link template                                |
 |-----------|----------------------------------------------|

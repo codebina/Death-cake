@@ -25,7 +25,7 @@ public:
     bool creste();
 
     [[nodiscard]] bool get_udata() const;
-    [[nodiscard]] std::string get_nume() const;
+    [[nodiscard]] const std::string& get_nume() const;
     [[nodiscard]] int get_z_crestere() const;
 
     friend std::ostream &operator<<(std::ostream &os, const planta &planta);

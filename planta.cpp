@@ -35,7 +35,7 @@ bool planta::creste() {
 }
 
 bool planta::get_udata() const { return udata; }
-std::string planta::get_nume() const { return nume; }
+const std::string& planta::get_nume() const { return nume; }
 int planta::get_z_crestere() const { return z_crestere; }
 
 std::ostream &operator<<(std::ostream &os, const planta &pl) {

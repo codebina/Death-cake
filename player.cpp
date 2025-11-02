@@ -47,7 +47,7 @@ void player::recolta() {
         return;
     }
     std::cout << "Au fost recoltate:\n";
-    for (auto &p : recolta) {
+    for (const auto &p : recolta) {
         add_inventar(p);
         std::cout << p.get_nume() << "\n";
     }

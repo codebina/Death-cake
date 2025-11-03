@@ -3,7 +3,10 @@
 //
 
 #include "player.h"
+#include "reteta.h"
+#include "satean.h"
 #include <iostream>
+#include <map>
 
 player::player(const std::string &nume, const ferma &ferma_cur)
         : nume(nume), energie(100), ferma_cur(ferma_cur) {}
@@ -12,8 +15,12 @@ void player::planteaza(const planta &planta) {
     ferma_cur.add_planta(planta);
 }
 
-void player::add_inventar(const planta &planta) {
-    inventar.push_back(planta);
+void player::add_inventar(const planta &planta, int cantitate) {
+    inventar[planta.get_nume()]+=cantitate;
+}
+
+void player::add_reteta(const reteta &reteta) {
+    retete.push_back(reteta);
 }
 
 void player::uda_plante() {
@@ -48,9 +55,40 @@ void player::recolta() {
     }
     std::cout << "Au fost recoltate:\n";
     for (const auto &p : recolta) {
-        add_inventar(p);
+        add_inventar(p, 2);
         std::cout << p.get_nume() << "\n";
     }
+}
+void player::cauta_reteta() {
+    reteta sarmale_post("Sarmale de post", {{"Varza", 2}, {"Morcov", 1}});
+    reteta ciorba("Ciorba de perisoare", {{"Carne tocata", 1},{"Cartof",3}});
+
+    satean s1("Tanti Lenuta", planta("Leustean", 3), sarmale_post );
+    satean s2("Mamaie Eugenia", planta("Rosie", 3), sarmale_post);
+    satean s3("Baba Mariana", planta("Varza", 2), ciorba);
+
+    std::vector<satean> sateni = {s1, s2, s3};
+
+    for (auto &baba : sateni) {
+        std::cout << baba;
+        if (baba.troc(inventar)) {
+            add_reteta(baba.get_ofera());
+            std::cout << "Ai primit o noua reteta!\n";
+            return;
+        }
+    }
+}
+
+void player::prepara(const reteta &reteta) const {
+    for (auto&r :retete) {
+        if (r.get_nume()==reteta.get_nume()) {
+            if (reteta.prepara(inventar)) return;
+            std::cout<<reteta;
+            return;
+        }
+
+    }
+    std::cout<<"Nu stii sa prepari reteta de "<<reteta.get_nume()<<" inca!\n";
 }
 
 void player::somnic() {
@@ -63,7 +101,12 @@ std::ostream &operator<<(std::ostream &os, const player &pl) {
     os << "Player: " << pl.nume << ", Energie: " << pl.energie << "\n";
     os << pl.ferma_cur;
     os << "Inventar:\n";
-    for (const auto &p : pl.inventar)
-        os << "  " << p.get_nume() << "\n";
+    for (const auto &[nume, cantitate] : pl.inventar)
+        os << "  " << nume <<" x "<<cantitate<<"\n";
+    if (pl.retete.empty()) std::cout<<"Nicio reteta cunoscuta.\n";
+    else {
+        std::cout<<"Retete:\n";
+        for (const auto&r : pl.retete) os<< " "<< r;
+    }
     return os;
 }

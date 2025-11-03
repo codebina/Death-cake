@@ -56,6 +56,10 @@ add_executable(${MAIN_EXECUTABLE_NAME}
         ferma.h
         player.cpp
         player.h
+        satean.cpp
+        satean.h
+        reteta.cpp
+        reteta.h
 )
 
 # NOTE: Add all defined targets (e.g. executables, libraries, etc. )

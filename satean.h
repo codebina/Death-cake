@@ -19,7 +19,7 @@ class satean {
     reteta ofera;
     public:
     satean(const std::string &nume, const planta &cere, const reteta &ofera);
-    [[nodiscard]] reteta get_ofera() const;
+    [[nodiscard]] const reteta &get_ofera() const;
     bool troc(const std::map<std::string, int>&inventar) const;
     friend std::ostream &operator<<(std::ostream &os, const satean &satean);
 };

@@ -7,7 +7,7 @@
 satean::satean(const std::string&nume, const planta &cere, const reteta &ofera ) :
 nume(nume), cere(cere), ofera(ofera) {}
 
-reteta satean::get_ofera() const {
+const reteta &satean:: get_ofera() const {
     return ofera;
 }
 bool satean::troc(const std::map<std::string, int>&inventar) const {

@@ -69,7 +69,7 @@ void player::cauta_reteta() {
 
     std::vector<satean> sateni = {s1, s2, s3};
 
-    for (auto &baba : sateni) {
+    for (const auto &baba : sateni) {
         std::cout << baba;
         if (baba.troc(inventar)) {
             add_reteta(baba.get_ofera());
@@ -80,7 +80,7 @@ void player::cauta_reteta() {
 }
 
 void player::prepara(const reteta &reteta) const {
-    for (auto&r :retete) {
+    for (const auto&r :retete) {
         if (r.get_nume()==reteta.get_nume()) {
             if (reteta.prepara(inventar)) return;
             std::cout<<reteta;

@@ -11,7 +11,7 @@ class shop {
     std::string nume;
     std::map<std::string, int> stoc;
 public:
-    shop(const std::string &nume);
+    explicit shop(const std::string &nume);
     int calculeaza_pret(const std::string &nume_prod, int cant);
     void adaugare_stoc(const std::string &nume_prod, int pret);
     friend std::ostream &operator<<(std::ostream &os, const shop &shop);

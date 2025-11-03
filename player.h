@@ -11,18 +11,21 @@
 #include "planta.h"
 #include "ferma.h"
 #include "reteta.h"
+#include "shop.h"
 
 class player {
     std::string nume;
     std::map<std::string,int> inventar;
+    std::map<std::string, int> saculet_seminte;
     int energie;
+    int bani;
     ferma ferma_cur;
     std::vector<reteta> retete;
 
 public:
     player(const std::string &nume, const ferma &ferma_cur);
-
     void planteaza(const planta &planta);
+    void cumpara_seminte(const planta &planta, int cant, shop &shop);
     void add_inventar(const planta &planta, int cantitate);
     void add_reteta(const reteta &reteta);
     void uda_plante();

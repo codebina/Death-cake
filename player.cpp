@@ -5,14 +5,34 @@
 #include "player.h"
 #include "reteta.h"
 #include "satean.h"
+#include "shop.h"
 #include <iostream>
 #include <map>
 
 player::player(const std::string &nume, const ferma &ferma_cur)
-        : nume(nume), energie(100), ferma_cur(ferma_cur) {}
+        : nume(nume), energie(100), bani(300), ferma_cur(ferma_cur) {}
 
 void player::planteaza(const planta &planta) {
+    if (saculet_seminte[planta.get_nume()]<=0) {
+        std::cout<<"Nu ai destle seminte de "<<planta.get_nume()<<
+            "! Poti cumpara seminte de la magazin!\n";
+        return;
+    }
     ferma_cur.add_planta(planta);
+    saculet_seminte[planta.get_nume()]--;
+}
+
+void player::cumpara_seminte(const planta &planta, int cant, shop &shop) {
+    int total=shop.calculeaza_pret(planta.get_nume(), cant);
+    if (bani<total) {
+        std::cout<<"Nu ai destui banuti!\n";
+        return;
+    }
+    if (total==-1) return;
+    saculet_seminte[planta.get_nume()]+=cant;
+    bani-=total;
+    std::cout << "Ai cumparat " << cant << " x " << planta.get_nume()
+    << " pentru " << total << " baniuti. Banuti ramasi: " << bani << "\n";
 }
 
 void player::add_inventar(const planta &planta, int cantitate) {
@@ -27,6 +47,11 @@ void player::uda_plante() {
     int cost_per_planta = 40;
     int plante_udate = 0;
 
+    if (ferma_cur.is_empty()) {
+        std::cout<<"Nu ai plantat nimic inca!\n";
+        return;
+    }
+
     for (auto &p : ferma_cur.get_plante()) {
         if (!p.get_udata()) {
             if (energie >= cost_per_planta) {
@@ -35,7 +60,7 @@ void player::uda_plante() {
                 plante_udate++;
             } else {
                 std::cout << "Nu ai destula energie pentru a uda planta: " << p.get_nume()
-                          << ". Nivel energie: " << energie << "\n";
+                << ". Nivel energie: " << energie << "\n";
                 break;
             }
         }
@@ -98,10 +123,13 @@ void player::somnic() {
 }
 
 std::ostream &operator<<(std::ostream &os, const player &pl) {
-    os << "Player: " << pl.nume << ", Energie: " << pl.energie << "\n";
+    os << "Player: " << pl.nume << ", Energie: " << pl.energie << " , Banuti: "<<pl.bani<<"\n";
     os << pl.ferma_cur;
     os << "Inventar:\n";
     for (const auto &[nume, cantitate] : pl.inventar)
+        os << "  " << nume <<" x "<<cantitate<<"\n";
+    os << "Saculet cu seminte:\n";
+    for (const auto &[nume, cantitate] : pl.saculet_seminte)
         os << "  " << nume <<" x "<<cantitate<<"\n";
     if (pl.retete.empty()) std::cout<<"Nicio reteta cunoscuta.\n";
     else {

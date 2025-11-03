@@ -60,6 +60,8 @@ add_executable(${MAIN_EXECUTABLE_NAME}
         satean.h
         reteta.cpp
         reteta.h
+        shop.cpp
+        shop.h
 )
 
 # NOTE: Add all defined targets (e.g. executables, libraries, etc. )

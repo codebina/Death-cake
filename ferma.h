@@ -16,7 +16,7 @@ class ferma {
 
 public:
     explicit ferma(const std::string &nume);
-
+    bool is_empty();
     void add_planta(const planta &p);
     void avans_zi();
     std::vector<planta> recoltare();

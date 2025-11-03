@@ -8,6 +8,10 @@
 
 ferma::ferma(const std::string &nume) : nume(nume), zi_cur(1) {}
 
+bool ferma::is_empty() {
+    return(plante.empty());
+};
+
 void ferma::add_planta(const planta &p) {
     plante.push_back(p);
     std::cout << "A fost plantata planta: " << p.get_nume()

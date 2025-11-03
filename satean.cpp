@@ -10,7 +10,7 @@ nume(nume), cere(cere), ofera(ofera) {}
 const reteta &satean:: get_ofera() const {
     return ofera;
 }
-bool satean::troc(const std::map<std::string, int>&inventar) const {
+bool satean::troc(std::map<std::string, int>&inventar) const{
     auto i = inventar.find(cere.get_nume());
 
     if (i == inventar.end() || i ->second <= 0) {
@@ -24,6 +24,7 @@ bool satean::troc(const std::map<std::string, int>&inventar) const {
     if (optiune) {
         std::cout << nume << ": "<<"Sarut mana, tinere..."
         << " Poftim reteta mea pentru " << ofera.get_nume() << ".\n";
+        inventar[cere.get_nume()]--;
         return true;
     }
     return false;

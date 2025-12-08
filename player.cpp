@@ -141,7 +141,7 @@ void player::pescuieste() {
     auto ptr_peste=std::unique_ptr<peste> (ptr_pest);
     add_inventar(std::move(ptr_peste), 1);
 
-    if (auto* peste_ptr = dynamic_cast<peste*>(inventar[nume_peste_gasit].back().get())) {
+    if (const auto* peste_ptr = dynamic_cast<peste*>(inventar[nume_peste_gasit].back().get())) {
         std::cout << "Ai pescuit un " << peste_ptr->get_nume()
                   << " de " << peste_ptr->get_greutate() << " kg in "
                   << peste_ptr->get_locatie() << "!\n";
@@ -188,7 +188,7 @@ void player::vinde_item(const std::string& nume_item, int cantitate) {
     int venit_total = 0;
 
     for (int i = 0; i < cantitate; ++i) {
-        std::unique_ptr<item>& item_ptr = it->second.back();
+        const std::unique_ptr<item>& item_ptr = it->second.back();
         int pret_unitate = item_ptr->calcPret();
         venit_total += pret_unitate;
         it->second.pop_back();
@@ -206,6 +206,7 @@ void player::somnic() {
     std::cout << "Te-ai bagat la somn, energia ti-a fost reincarcata la maxim.\n";
     energie = 100;
     ferma_cur.avans_zi();
+    std::cout << "Ziua curenta: " << ferma::get_ziua_curenta() << "\n";
     for (auto& pair : inventar) {
         for (auto& ptr : pair.second) {
             ptr->avans_zi();

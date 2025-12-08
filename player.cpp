@@ -170,11 +170,14 @@ void player::cauta_reteta() {
 void player::prepara(const reteta &reteta) {
     for (const auto&r :retete) {
         if (r.get_nume()==reteta.get_nume()) {
-            if (reteta.prepara(inventar)) return;
-            std::cout<<reteta;
+            std::unique_ptr<item> produs_gatit = r.prepara(inventar);
+
+            if (produs_gatit) {
+                add_inventar(std::move(produs_gatit), 1);
+                std::cout << "Produsul " << r.get_nume() << " a fost adaugat in inventar!\n";
+            }
             return;
         }
-
     }
     std::cout<<"Nu stii sa prepari reteta de "<<reteta.get_nume()<<" inca!\n";
 }

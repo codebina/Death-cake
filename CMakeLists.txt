@@ -72,6 +72,8 @@ add_executable(${MAIN_EXECUTABLE_NAME}
         animal.h
         exceptions.cpp
         exceptions.h
+        mancareGatita.cpp
+        mancareGatita.h
 )
 
 # NOTE: Add all defined targets (e.g. executables, libraries, etc. )

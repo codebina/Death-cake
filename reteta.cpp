@@ -4,11 +4,13 @@
 
 #include "reteta.h"
 #include "exceptions.h"
+#include "mancareGatita.h"
+
 reteta::reteta(const std::string &nume, const std::map<std::string, int> &ingrediente):
 nume(nume), ingrediente(ingrediente){}
 
 
-bool reteta::prepara(std::map<std::string, std::vector<std::unique_ptr<item>>>& inventar) const {
+std::unique_ptr<item> reteta::prepara(std::map<std::string, std::vector<std::unique_ptr<item>>>& inventar) const {
     for (const auto &[item_necesar, cant_necesara] : ingrediente)
     {
         auto it = inventar.find(item_necesar);
@@ -20,8 +22,6 @@ bool reteta::prepara(std::map<std::string, std::vector<std::unique_ptr<item>>>& 
         }
     }
 
-    std::cout << "Felicitari! Ai reusit sa prepari: " << nume << "!\n";
-
     for (const auto &[item_necesar, cant_necesara] : ingrediente) {
         auto it = inventar.find(item_necesar);
         for (int i = 0; i < cant_necesara; ++i) {
@@ -31,7 +31,13 @@ bool reteta::prepara(std::map<std::string, std::vector<std::unique_ptr<item>>>& 
             inventar.erase(it);
         }
     }
-    return true;
+    constexpr int pret_fix_vanzare = 150;
+
+    auto preparat = std::make_unique<mancareGatita>(nume, pret_fix_vanzare);
+
+    std::cout << "Felicitari! Ai reusit sa prepari: " << nume << "!\n";
+
+    return preparat;
 }
 const std::string& reteta::get_nume () const {return nume;}
 

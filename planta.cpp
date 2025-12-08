@@ -57,7 +57,7 @@ int planta::calcPret() const {
 void planta::afis(std::ostream& os) const {
     os  << "Planta: " << nume
         << ", Zile pana creste: " << z_crestere
-        << ", Udata: " << (udata ? "Da," : "Nu,") << "Pret de vandut: "
+        << ", Udata: " << (udata ? "Da," : "Nu,") << " Pret de vandut: "
         << sell_price
         << ", Prospetime: " << prospetime;
 }

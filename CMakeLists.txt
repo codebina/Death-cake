@@ -62,6 +62,16 @@ add_executable(${MAIN_EXECUTABLE_NAME}
         reteta.h
         shop.cpp
         shop.h
+        item.cpp
+        item.h
+        itemAnimal.cpp
+        itemAnimal.h
+        peste.cpp
+        peste.h
+        animal.cpp
+        animal.h
+        exceptions.cpp
+        exceptions.h
 )
 
 # NOTE: Add all defined targets (e.g. executables, libraries, etc. )

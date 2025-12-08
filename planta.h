@@ -7,28 +7,33 @@
 
 #include <string>
 #include <iostream>
+#include "item.h"
 
-class planta {
+class planta : public item{
     std::string nume;
     int z_crestere;
     bool udata;
+    int prospetime;
 
 public:
-    planta(const std::string &nume, int z_crestere);
+    planta(const std::string &nume, int z_crestere,int sell_price);
     planta(const planta &other);
-    planta &operator=(const planta &other);
-    ~planta();
+    planta &operator=(planta other);
+    friend void swap(planta& pl1, planta& pl2)noexcept;
+    [[nodiscard]] item* clone() const override;
+    ~planta()override;
 
     void set_udata();
     void reset_udata();
-    bool gata();
+    [[nodiscard]] bool gata () const;
     bool creste();
 
     [[nodiscard]] bool get_udata() const;
-    [[nodiscard]] const std::string& get_nume() const;
+    [[nodiscard]] const std::string& get_nume() const override;
     [[nodiscard]] int get_z_crestere() const;
-
-    friend std::ostream &operator<<(std::ostream &os, const planta &planta);
+    void avans_zi() override;
+    [[nodiscard]] int calcPret() const override;
+    void afis(std::ostream& os) const override;
 };
 
 

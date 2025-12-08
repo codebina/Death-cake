@@ -24,7 +24,7 @@ void shop::adaugare_stoc(const std::string &nume_prod, int pret) {
 }
 
 std::ostream &operator<<(std::ostream &os, const shop &shop) {
-    os << "Magazin: " << shop.nume << "\n";
+    os << "\nMagazin: " << shop.nume << "\n";
     for (const auto &[prod, pret] : shop.stoc)
         os << "  " << prod << " - " << pret << " banuti\n";
     return os;

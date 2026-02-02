@@ -11,14 +11,17 @@
 class animal {
     std::string nume;
     std::string specie;
-    int zile_max_produs;
-    int zile_pana_produs; // contorizează ciclul de producție
+    int zileMaxProdus;
+    int zilePanaProdus; // contorizează ciclul de producție
 
 
 public:
-    animal(const std::string &nume, const std::string &specie, int zile_max_produs);
-    void avans_zi();
-    std::unique_ptr<itemAnimal> colecteaza_produs();
+    animal(const std::string &nume, const std::string &specie, int zileMaxProdus);
+
+    void avansZi();
+
+    std::unique_ptr<itemAnimal> colecteazaProdus();
+
     friend std::ostream &operator<<(std::ostream &os, const animal &anim);
 };
 

@@ -50,30 +50,31 @@ include(cmake/CopyHelper.cmake)
 # NOTE: update executable name in .github/workflows/cmake.yml:25 when changing name here
 add_executable(${MAIN_EXECUTABLE_NAME}
     main.cpp
-        planta.cpp
-        planta.h
-        ferma.cpp
-        ferma.h
-        player.cpp
-        player.h
-        satean.cpp
-        satean.h
-        reteta.cpp
-        reteta.h
-        shop.cpp
-        shop.h
-        item.cpp
-        item.h
-        itemAnimal.cpp
-        itemAnimal.h
-        peste.cpp
-        peste.h
-        animal.cpp
-        animal.h
-        exceptions.cpp
-        exceptions.h
-        mancareGatita.cpp
-        mancareGatita.h
+        src/planta.cpp
+        headers/planta.h
+        src/ferma.cpp
+        headers/ferma.h
+        src/player.cpp
+        headers/player.h
+        headers/satean.h
+        src/reteta.cpp
+        headers/reteta.h
+        src/shop.cpp
+        headers/shop.h
+        src/item.cpp
+        headers/item.h
+        src/itemAnimal.cpp
+        headers/itemAnimal.h
+        src/peste.cpp
+        headers/peste.h
+        src/animal.cpp
+        headers/animal.h
+        src/exceptions.cpp
+        headers/exceptions.h
+        src/mancareGatita.cpp
+        headers/mancareGatita.h
+        src/itemFactory.cpp
+        headers/itemFactory.h
 )
 
 # NOTE: Add all defined targets (e.g. executables, libraries, etc. )

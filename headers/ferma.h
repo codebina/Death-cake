@@ -14,19 +14,26 @@ class ferma {
     std::string nume;
     std::vector<planta> plante;
     std::vector<animal> animale;
-    static int zi_cur;
+    static int ziCur;
 
 public:
-    static int get_ziua_curenta();
+    static int getZiuaCurenta();
+
     explicit ferma(const std::string &nume);
-    bool is_empty();
-    void add_planta(const planta &p);
-    void add_animal(const animal &a);
-    void avans_zi();
+
+    bool isEmpty();
+
+    void addPlanta(const planta &p);
+
+    void addAnimal(const animal &a);
+
+    void avansZi();
+
     std::vector<planta> recoltare();
 
-    [[nodiscard]] std::vector<planta>& get_plante();
-    std::vector<std::unique_ptr<itemAnimal>> colecteaza_produse_animale();
+    [[nodiscard]] std::vector<planta> &getPlante();
+
+    std::vector<std::unique_ptr<itemAnimal> > colecteazaProduseAnimale();
 
     friend std::ostream &operator<<(std::ostream &os, const ferma &ferma);
 };

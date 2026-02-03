@@ -40,7 +40,6 @@ public:
     void pescuieste();
 
     [[nodiscard]] double getGreutate() const { return greutate; }
-    [[nodiscard]] const std::string &getLocatie() const { return locatie; }
     [[nodiscard]] const std::string &getNume() const override { return nume; }
     double calculeazaEfort() const override;
 };

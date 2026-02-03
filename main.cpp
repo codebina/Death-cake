@@ -147,7 +147,6 @@ int main() {
                     }
                     break;
                 }
-                    break;
                 case 8: player1.somnic();
                     break;
                 case 9: player1.pescuieste();

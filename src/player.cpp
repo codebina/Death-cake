@@ -234,7 +234,7 @@ void player::cautaReteta() {
 
 void player::prepara(int indexReteta) {
     if (indexReteta >= 0 && indexReteta < static_cast<int>(retete.size())) {
-        reteta& r = retete[indexReteta];
+        const reteta& r = retete[indexReteta];
         std::unique_ptr<item> produsGatit = r.prepara(inventar);
 
         if (produsGatit) {

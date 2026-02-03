@@ -7,7 +7,6 @@
 
 #include <map>
 #include <string>
-#include <iostream>
 #include <vector>
 #include <memory>
 #include "item.h"
@@ -17,7 +16,7 @@ class reteta {
     std::map<std::string, int> ingrediente;
 
 public:
-    reteta(const std::string &nume, const std::map<std::string, int> &ingediente);
+    reteta(const std::string &nume, const std::map<std::string, int> &ingrediente);
 
     std::unique_ptr<item> prepara(std::map<std::string, std::vector<std::unique_ptr<item> > > &inventar) const;
 
@@ -25,7 +24,7 @@ public:
 
     friend std::ostream &operator<<(std::ostream &os, const reteta &reteta);
 
-    int calcPret() const {
+    [[nodiscard]] static int calcPret() {
         // Pretul unei retete gata preparate
         return 150;
     }

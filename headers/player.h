@@ -13,7 +13,6 @@
 #include "planta.h"
 #include "ferma.h"
 #include "reteta.h"
-#include "shop.h"
 #include "animal.h"
 
 class player {
@@ -56,7 +55,7 @@ public:
 
     void compara(const std::string& nume1, const std::string& nume2);
 
-    const std::vector<reteta>& getRetete() const { return retete; }
+    [[nodiscard]] const std::vector<reteta>& getRetete() const { return retete; }
 
     friend std::ostream &operator<<(std::ostream &os, const player &player);
 };

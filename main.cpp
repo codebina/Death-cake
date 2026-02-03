@@ -4,7 +4,7 @@
 #include "headers/exceptions.h"
 #include "headers/itemFactory.h"
 #include <limits>
-
+#include "headers/shop.h"
 
 int main() {
     ferma FermaInitiala("Ferma Bunicii");

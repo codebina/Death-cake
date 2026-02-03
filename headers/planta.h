@@ -51,7 +51,7 @@ public:
 
     [[nodiscard]] int calcPret() const override;
 
-    double calculeazaEfort() const override;
+    [[nodiscard]] double calculeazaEfort() const override;
 
     void afis(std::ostream &os) const override;
 };

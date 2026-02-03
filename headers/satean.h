@@ -6,8 +6,6 @@
 #define OOP_SATEAN_H
 
 #include "item.h"
-#include "reteta.h"
-
 #include <map>
 #include <string>
 #include <vector>

@@ -4,7 +4,6 @@
 
 #include "../headers/peste.h"
 #include <algorithm>
-#include <cstdlib>
 #include <random>
 
 peste::peste(const std::string &nume, int sellPrice, const std::string &locatie)

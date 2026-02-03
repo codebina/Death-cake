@@ -234,31 +234,22 @@ void player::cautaReteta() {
 
 void player::prepara(int indexReteta) {
     if (indexReteta >= 0 && indexReteta < static_cast<int>(retete.size())) {
-
         reteta& r = retete[indexReteta];
-
         std::unique_ptr<item> produsGatit = r.prepara(inventar);
 
         if (produsGatit) {
-            std::cout << "Ai gatit: " << r.getNume() << "!\n";
-            addInventar(std::move(produsGatit), 1);
-        }
-        if (produsGatit) {
             double efort = produsGatit->calculeazaEfort();
-
             if (this->energie >= efort) {
                 this->energie -= static_cast<int>(efort);
-                addInventar(std::move(produsGatit), 1);
                 std::cout << "Ai gatit: " << r.getNume() << "!\n";
             } else {
                 std::cout << "Ai terminat de gatit dar ai lesinat de oboseala langa aragaz!\n";
                 this->energie = 0;
-                addInventar(std::move(produsGatit), 1);
             }
+            addInventar(std::move(produsGatit), 1);
         }
-
     } else {
-        std::cout << "Index invalid! Nu ai nicio reteta la aceasta pozitie.\n";
+        std::cout << "Index invalid!\n";
     }
 }
 
